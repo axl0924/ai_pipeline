@@ -4,69 +4,60 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ReelWave | 영화 추천 플랫폼</title>
-  <meta name="description" content="장르별 영화 추천, 인기 작품, 오늘의 추천을 한눈에 보는 영화 큐레이션 메인 페이지." />
+  <meta name="description" content="미니멀한 영화 추천 플랫폼 메인 페이지. 인기 영화, 장르별 추천, 오늘의 추천을 한눈에 보고 클릭으로 자세한 정보를 확인할 수 있습니다." />
   <style>
     :root {
       color-scheme: dark;
-      --bg: #090b12;
-      --bg-elev: #111522;
-      --bg-soft: #171b2a;
-      --text: #f4f6fb;
-      --muted: #a8afc3;
+      --bg: #0b0d12;
+      --panel: #11141b;
+      --panel-2: #161a22;
       --line: rgba(255, 255, 255, 0.08);
-      --accent: #ff4d6d;
-      --accent-2: #ffb703;
-      --accent-3: #6ee7ff;
-      --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
-      --radius-xl: 28px;
+      --text: #f3f5fa;
+      --muted: #a6adbd;
+      --accent: #ff5a6f;
+      --accent-soft: rgba(255, 90, 111, 0.14);
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+      --radius-xl: 30px;
       --radius-lg: 22px;
       --radius-md: 16px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: "Segoe UI", "Pretendard", "Apple SD Gothic Neo", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(255, 77, 109, 0.16), transparent 30%),
-        radial-gradient(circle at top right, rgba(110, 231, 255, 0.12), transparent 28%),
-        linear-gradient(180deg, #090b12 0%, #0d1120 48%, #090b12 100%);
-      color: var(--text);
       min-height: 100vh;
+      background:
+        radial-gradient(circle at top, rgba(255, 90, 111, 0.10), transparent 30%),
+        linear-gradient(180deg, #090b10 0%, #0b0d12 100%);
+      color: var(--text);
+      font-family: "Segoe UI", "Pretendard", "Apple SD Gothic Neo", sans-serif;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
 
     .shell {
-      width: min(1200px, calc(100% - 32px));
+      width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
     }
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 30;
-      backdrop-filter: blur(18px);
-      background: rgba(9, 11, 18, 0.72);
+      z-index: 20;
+      background: rgba(11, 13, 18, 0.78);
       border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
     }
 
     .topbar-inner {
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      padding: 18px 0;
+      gap: 18px;
+      padding: 14px 0;
     }
 
     .brand {
@@ -74,39 +65,37 @@
       align-items: center;
       gap: 12px;
       font-weight: 800;
-      letter-spacing: 0.02em;
-      font-size: 1.1rem;
+      letter-spacing: 0.01em;
     }
 
     .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--accent), #7c3aed);
+      width: 38px;
+      height: 38px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--accent), #7c4dff);
       display: grid;
       place-items: center;
-      box-shadow: 0 12px 30px rgba(255, 77, 109, 0.35);
+      box-shadow: 0 12px 30px rgba(255, 90, 111, 0.22);
     }
 
     .brand-mark::before {
       content: "▶";
+      font-size: 0.92rem;
       transform: translateX(1px);
-      font-size: 1rem;
     }
 
     .nav {
       display: flex;
-      align-items: center;
-      gap: 18px;
       flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 0.95rem;
+      justify-content: flex-end;
+      gap: 8px;
     }
 
     .nav a {
       padding: 10px 12px;
       border-radius: 999px;
-      transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+      color: var(--muted);
+      transition: background 160ms ease, color 160ms ease, transform 160ms ease;
     }
 
     .nav a:hover {
@@ -116,134 +105,114 @@
     }
 
     .hero {
-      padding: 28px 0 14px;
+      padding: 28px 0 12px;
     }
 
-    .hero-panel {
+    .hero-card {
       position: relative;
       overflow: hidden;
-      border-radius: clamp(22px, 3vw, 36px);
-      background:
-        linear-gradient(130deg, rgba(12, 16, 28, 0.92), rgba(12, 16, 28, 0.66)),
-        radial-gradient(circle at 18% 18%, rgba(255, 77, 109, 0.35), transparent 24%),
-        radial-gradient(circle at 78% 26%, rgba(110, 231, 255, 0.16), transparent 22%),
-        linear-gradient(135deg, #171b2a, #0f1320);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: clamp(24px, 3vw, 36px);
+      min-height: 500px;
+      border: 1px solid var(--line);
       box-shadow: var(--shadow);
-      min-height: 520px;
-      display: grid;
-      align-items: end;
-    }
-
-    .hero-panel::after {
-      content: "";
-      position: absolute;
-      inset: auto -10% -25% auto;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 77, 109, 0.28), transparent 65%);
-      filter: blur(12px);
-      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(16, 19, 27, 0.88), rgba(13, 16, 22, 0.82)),
+        radial-gradient(circle at 75% 18%, rgba(255, 90, 111, 0.18), transparent 26%),
+        radial-gradient(circle at 15% 28%, rgba(255, 255, 255, 0.06), transparent 24%);
     }
 
     .hero-content {
       position: relative;
       z-index: 1;
-      padding: clamp(28px, 5vw, 64px);
-      max-width: 700px;
+      padding: clamp(26px, 5vw, 64px);
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      min-height: 500px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 14px;
+      width: fit-content;
+      padding: 8px 13px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.06);
       color: #fff;
-      font-size: 0.85rem;
-      letter-spacing: 0.06em;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 18px;
     }
 
     .hero h1 {
       margin: 0;
-      font-size: clamp(2.6rem, 5vw, 5.4rem);
-      line-height: 0.95;
-      letter-spacing: -0.05em;
+      font-size: clamp(2.4rem, 4.8vw, 5.1rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
     }
 
-    .hero h1 strong {
-      color: #fff;
-      text-shadow: 0 10px 35px rgba(255, 77, 109, 0.2);
-    }
-
-    .hero-copy {
-      margin: 18px 0 28px;
-      max-width: 58ch;
+    .hero p {
+      margin: 18px 0 0;
+      max-width: 60ch;
       color: var(--muted);
-      font-size: 1.05rem;
       line-height: 1.8;
+      font-size: 1.03rem;
     }
 
     .hero-actions {
+      margin-top: 26px;
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 28px;
+      gap: 12px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
+      padding: 14px 18px;
       border-radius: 999px;
-      padding: 14px 20px;
       border: 1px solid transparent;
-      font-weight: 700;
-      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
       cursor: pointer;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+      font-weight: 700;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
+    .btn:hover { transform: translateY(-2px); }
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), #ff7b54);
       color: #fff;
-      box-shadow: 0 18px 38px rgba(255, 77, 109, 0.25);
     }
-
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--line);
       color: var(--text);
-      border-color: rgba(255, 255, 255, 0.1);
     }
 
     .hero-meta {
+      margin-top: 22px;
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      color: var(--muted);
-      font-size: 0.93rem;
+      gap: 10px;
     }
 
-    .meta-chip {
+    .chip {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
+      padding: 8px 11px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.06);
+      color: #d8ddea;
+      font-size: 0.84rem;
     }
 
     .section {
-      padding: 34px 0 8px;
+      padding: 32px 0 0;
     }
 
     .section-head {
@@ -256,224 +225,191 @@
 
     .section-head h2 {
       margin: 0;
-      font-size: clamp(1.5rem, 2vw, 2.15rem);
+      font-size: clamp(1.45rem, 2vw, 2.05rem);
       letter-spacing: -0.03em;
     }
 
     .section-head p {
       margin: 0;
+      max-width: 60ch;
       color: var(--muted);
-      max-width: 55ch;
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
     .grid {
       display: grid;
-      gap: 18px;
+      gap: 16px;
     }
 
-    .movie-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    .genre-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .today-grid {
-      grid-template-columns: 1.2fr 0.8fr;
-    }
+    .movie-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .genre-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .today-grid { grid-template-columns: 1fr; }
 
     .card {
-      position: relative;
-      overflow: hidden;
+      background: linear-gradient(180deg, rgba(20, 24, 33, 0.98), rgba(14, 17, 24, 0.98));
+      border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      background: linear-gradient(180deg, rgba(23, 27, 42, 0.98), rgba(14, 17, 28, 0.96));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
-      transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
-      min-height: 100%;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
     }
 
     .card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(255, 255, 255, 0.16);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.38);
+      transform: translateY(-6px);
+      border-color: rgba(255, 255, 255, 0.14);
+      box-shadow: 0 20px 34px rgba(0, 0, 0, 0.28);
     }
 
-    .poster {
+    .movie-card .poster {
       aspect-ratio: 3 / 4;
       background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.88)),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.76)),
         var(--poster);
       background-size: cover;
       background-position: center;
-      position: relative;
     }
 
-    .poster::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 35%, rgba(0, 0, 0, 0.6) 100%);
-    }
-
-    .movie-body {
+    .movie-card .body {
       padding: 16px 16px 18px;
     }
 
-    .movie-title {
-      display: flex;
-      align-items: start;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .movie-title h3 {
+    .movie-card h3,
+    .genre-card h3,
+    .today-card h3 {
       margin: 0;
-      font-size: 1.05rem;
-      line-height: 1.35;
+      letter-spacing: -0.02em;
     }
 
-    .rating {
-      flex: none;
-      color: #ffd166;
-      font-weight: 800;
-      background: rgba(255, 209, 102, 0.08);
-      border: 1px solid rgba(255, 209, 102, 0.18);
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 0.82rem;
-    }
-
-    .movie-body p,
-    .genre-card p,
-    .today-body p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .tags {
+    .movie-meta {
+      margin-top: 10px;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 14px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.86rem;
     }
 
-    .tag {
+    .rating {
+      color: #ffd166;
+      font-weight: 800;
       padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      color: #d7dbe9;
-      font-size: 0.8rem;
+      background: rgba(255, 209, 102, 0.08);
+      border: 1px solid rgba(255, 209, 102, 0.16);
     }
+
+    .movie-card p,
+    .genre-card p,
+    .today-copy,
+    .detail-list li,
+    .footer {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .movie-card p {
+      margin: 12px 0 0;
+    }
+
+    .mini-action {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .mini-action::after {
+      content: "→";
+      transition: transform 180ms ease;
+    }
+
+    .movie-card:hover .mini-action::after { transform: translateX(2px); }
 
     .genre-card {
       padding: 22px;
-      border-radius: var(--radius-lg);
-      min-height: 220px;
-      background:
-        linear-gradient(160deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
-        var(--genre-bg);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      min-height: 180px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 18px;
-      transition: transform 200ms ease, border-color 200ms ease;
+      gap: 16px;
+      cursor: pointer;
     }
 
-    .genre-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(255, 255, 255, 0.14);
-    }
-
-    .genre-top {
+    .genre-card .tag-row,
+    .detail-tags {
       display: flex;
-      justify-content: space-between;
-      align-items: start;
-      gap: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
     }
 
-    .genre-top h3 {
-      margin: 0;
-      font-size: 1.1rem;
+    .tag {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.82rem;
+      color: #dbe0ec;
+    }
+
+    .genre-head {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 12px;
     }
 
     .genre-badge {
       padding: 7px 10px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-      color: #fff;
+      background: var(--accent-soft);
+      color: #ffd6dd;
       font-size: 0.8rem;
+      white-space: nowrap;
     }
 
-    .genre-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .genre-links span {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 11px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      color: #dde2f2;
-      font-size: 0.82rem;
-    }
-
-    .today-feature {
+    .today-card {
       padding: 24px;
       display: grid;
-      grid-template-columns: 1fr 0.7fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 20px;
       align-items: center;
+      cursor: pointer;
     }
 
-    .today-art {
-      min-height: 380px;
+    .today-visual {
+      min-height: 360px;
       border-radius: 24px;
       background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.72)),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.72)),
         var(--today-poster);
       background-size: cover;
       background-position: center;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.25);
       position: relative;
+      overflow: hidden;
     }
 
-    .today-art::after {
+    .today-visual::after {
       content: "";
       position: absolute;
       inset: auto 16px 16px auto;
-      width: 96px;
-      height: 96px;
-      border-radius: 28px;
-      background: linear-gradient(135deg, rgba(255, 77, 109, 0.92), rgba(124, 58, 237, 0.9));
-      box-shadow: 0 20px 40px rgba(255, 77, 109, 0.25);
+      width: 82px;
+      height: 82px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255, 90, 111, 0.9), rgba(124, 77, 255, 0.85));
       opacity: 0.92;
     }
 
-    .today-body {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .today-body h3 {
-      margin: 0;
-      font-size: 2rem;
-      letter-spacing: -0.04em;
+    .today-copy {
+      margin: 12px 0 0;
     }
 
     .today-stats {
+      margin-top: 18px;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
@@ -482,100 +418,141 @@
     .stat {
       padding: 14px;
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .stat strong {
       display: block;
-      margin-bottom: 6px;
-      font-size: 1.05rem;
+      color: var(--text);
+      margin-bottom: 4px;
     }
 
     .footer {
+      padding: 28px 0 36px;
       margin-top: 34px;
-      padding: 28px 0 34px;
       border-top: 1px solid var(--line);
-      color: var(--muted);
       font-size: 0.92rem;
     }
 
     .footer-inner {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      gap: 18px;
+      gap: 16px;
       flex-wrap: wrap;
+      align-items: center;
     }
 
     .footer strong {
       color: var(--text);
     }
 
-    .fade-up {
-      animation: fadeUp 600ms ease both;
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(5, 7, 11, 0.72);
+      padding: 20px;
+      z-index: 40;
     }
 
-    .delay-1 { animation-delay: 90ms; }
-    .delay-2 { animation-delay: 180ms; }
-    .delay-3 { animation-delay: 270ms; }
+    .modal.open { display: flex; }
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .modal-panel {
+      width: min(760px, 100%);
+      max-height: min(85vh, 840px);
+      overflow: auto;
+      border-radius: 26px;
+      background: linear-gradient(180deg, #161a22, #10141b);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 36px 80px rgba(0, 0, 0, 0.45);
+      padding: 22px;
+    }
+
+    .modal-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+
+    .modal-top h3 {
+      margin: 0;
+      font-size: 1.7rem;
+      letter-spacing: -0.03em;
+    }
+
+    .close-btn {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .modal-poster {
+      height: 220px;
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.78)),
+        var(--modal-poster);
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin: 14px 0 16px;
+    }
+
+    .detail-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 16px;
+    }
+
+    .detail-box {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .detail-box strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .detail-list {
+      margin: 14px 0 0;
+      padding-left: 18px;
+    }
+
+    .detail-list li + li { margin-top: 6px; }
+
+    .hidden {
+      display: none !important;
     }
 
     @media (max-width: 1024px) {
-      .movie-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .genre-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .today-grid,
-      .today-feature {
-        grid-template-columns: 1fr;
-      }
+      .movie-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .genre-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .today-card { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 720px) {
-      .shell {
-        width: min(100% - 20px, 1200px);
-      }
-
-      .topbar-inner {
-        flex-direction: column;
-        align-items: start;
-      }
-
-      .nav {
-        gap: 8px;
-      }
-
-      .hero-panel {
-        min-height: 0;
-      }
-
-      .hero-content {
-        padding: 24px;
-      }
-
-      .movie-grid,
-      .genre-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .today-stats {
-        grid-template-columns: 1fr;
-      }
+      .shell { width: min(100% - 20px, 1180px); }
+      .topbar-inner { flex-direction: column; align-items: start; }
+      .nav { justify-content: flex-start; }
+      .hero-card { min-height: 0; }
+      .hero-content { min-height: 0; }
+      .movie-grid, .genre-grid { grid-template-columns: 1fr; }
+      .today-stats, .detail-grid { grid-template-columns: 1fr; }
+      .today-visual { min-height: 280px; }
     }
   </style>
 </head>
@@ -590,7 +567,7 @@
         <a href="#popular">인기 영화</a>
         <a href="#genres">장르 추천</a>
         <a href="#today">오늘의 추천</a>
-        <a href="#footer">문의</a>
+        <a href="#footer">Footer</a>
       </nav>
     </div>
   </header>
@@ -598,22 +575,22 @@
   <main id="top">
     <section class="hero">
       <div class="shell">
-        <div class="hero-panel fade-up">
+        <div class="hero-card">
           <div class="hero-content">
-            <div class="eyebrow">Curated cinema · premium picks</div>
-            <h1><strong>당신의 취향을 영화 한 편으로</strong> 완성합니다.</h1>
-            <p class="hero-copy">
-              ReelWave는 인기작, 장르별 큐레이션, 오늘의 추천을 한 화면에 모은 영화 추천 플랫폼입니다.
-              몰입감 있는 다크 테마와 넷플릭스 스타일의 히어로 배너로, 감상할 작품을 빠르게 고를 수 있도록 설계했습니다.
+            <div class="eyebrow">curated movie picks</div>
+            <h1>영화 고르기, 더 쉽고 더 깔끔하게.</h1>
+            <p>
+              ReelWave는 인기 영화, 장르별 추천, 오늘의 추천을 한 화면에서 간단하게 보여주는 영화 추천 플랫폼입니다.
+              카드에는 핵심 정보만 보여주고, 자세한 내용은 클릭했을 때 열리도록 만들었습니다.
             </p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#today">오늘의 추천 보기</a>
-              <a class="btn btn-secondary" href="#popular">인기 영화 탐색</a>
+              <a class="btn btn-secondary" href="#popular">인기 영화 보기</a>
             </div>
             <div class="hero-meta">
-              <span class="meta-chip">4K 시네마 감성</span>
-              <span class="meta-chip">장르별 맞춤 추천</span>
-              <span class="meta-chip">한 파일 완성형 UI</span>
+              <span class="chip">미니멀한 다크 테마</span>
+              <span class="chip">클릭으로 상세 열기</span>
+              <span class="chip">모바일 반응형</span>
             </div>
           </div>
         </div>
@@ -625,74 +602,10 @@
         <div class="section-head">
           <div>
             <h2>인기 영화 카드</h2>
-            <p>지금 많은 사람들이 찾는 작품들을 카드형으로 보여줍니다. 포스터, 평점, 분위기를 빠르게 비교해 보세요.</p>
+            <p>화면에는 짧게, 클릭하면 더 자세히 볼 수 있게 구성했습니다. 제목, 장르, 평점, 한 줄 소개만 먼저 보여줍니다.</p>
           </div>
         </div>
-        <div class="grid movie-grid">
-          <article class="card fade-up delay-1">
-            <div class="poster" style="--poster: radial-gradient(circle at top, #ff7b54, #1b1f31 55%, #080b12 100%), url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 300 400&quot;><defs><linearGradient id=&quot;g&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot; y2=&quot;1&quot;><stop stop-color=&quot;%23ff7b54&quot;/><stop offset=&quot;1&quot; stop-color=&quot;%23080b12&quot;/></linearGradient></defs><rect width=&quot;300&quot; height=&quot;400&quot; fill=&quot;url(%23g)&quot;/><circle cx=&quot;150&quot; cy=&quot;150&quot; r=&quot;72&quot; fill=&quot;%23ffffff22&quot;/><path d=&quot;M120 95h60l16 135-46 70-46-70z&quot; fill=&quot;%23ffffff22&quot;/></svg>');"></div>
-            <div class="movie-body">
-              <div class="movie-title">
-                <h3>노을의 경계선</h3>
-                <span class="rating">9.2</span>
-              </div>
-              <p>미스터리와 감정선이 정교하게 맞물리는 작품. 색감과 사운드가 완성도를 끌어올리는 수작입니다.</p>
-              <div class="tags">
-                <span class="tag">미스터리</span>
-                <span class="tag">드라마</span>
-                <span class="tag">몰입감</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card fade-up delay-2">
-            <div class="poster" style="--poster: radial-gradient(circle at top, #6ee7ff, #1a2440 58%, #090b12 100%), url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 300 400&quot;><rect width=&quot;300&quot; height=&quot;400&quot; fill=&quot;%231a2440&quot;/><path d=&quot;M0 300 Q75 240 150 300 T300 300 V400 H0Z&quot; fill=&quot;%236ee7ff33&quot;/><circle cx=&quot;225&quot; cy=&quot;110&quot; r=&quot;42&quot; fill=&quot;%23ffffff22&quot;/></svg>');"></div>
-            <div class="movie-body">
-              <div class="movie-title">
-                <h3>사라진 궤도</h3>
-                <span class="rating">8.9</span>
-              </div>
-              <p>광활한 우주를 배경으로 인간 관계를 섬세하게 그려낸 SF 드라마. 차분하지만 강한 여운을 남깁니다.</p>
-              <div class="tags">
-                <span class="tag">SF</span>
-                <span class="tag">드라마</span>
-                <span class="tag">감성</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card fade-up delay-3">
-            <div class="poster" style="--poster: radial-gradient(circle at top, #ffd166, #39291a 58%, #090b12 100%), url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 300 400&quot;><rect width=&quot;300&quot; height=&quot;400&quot; fill=&quot;%2339291a&quot;/><path d=&quot;M100 320c10-55 90-55 100 0z&quot; fill=&quot;%23ffd16633&quot;/><circle cx=&quot;150&quot; cy=&quot;160&quot; r=&quot;56&quot; fill=&quot;%23ffffff22&quot;/></svg>');"></div>
-            <div class="movie-body">
-              <div class="movie-title">
-                <h3>도시의 밤, 첫 번째 미소</h3>
-                <span class="rating">8.7</span>
-              </div>
-              <p>도심 속 로맨스와 코미디가 균형 있게 섞인 작품. 부담 없이 보기 좋고, 분위기가 밝습니다.</p>
-              <div class="tags">
-                <span class="tag">로맨스</span>
-                <span class="tag">코미디</span>
-                <span class="tag">힐링</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card fade-up">
-            <div class="poster" style="--poster: radial-gradient(circle at top, #8d6bff, #251e40 58%, #090b12 100%), url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 300 400&quot;><rect width=&quot;300&quot; height=&quot;400&quot; fill=&quot;%23251e40&quot;/><path d=&quot;M60 290 Q150 180 240 290&quot; fill=&quot;none&quot; stroke=&quot;%23ffffff33&quot; stroke-width=&quot;20&quot;/></svg>');"></div>
-            <div class="movie-body">
-              <div class="movie-title">
-                <h3>마지막 극장</h3>
-                <span class="rating">9.0</span>
-              </div>
-              <p>영화라는 매체의 감동을 정면으로 다루는 오마주 작품. 카메라와 음악의 힘을 느낄 수 있습니다.</p>
-              <div class="tags">
-                <span class="tag">드라마</span>
-                <span class="tag">예술</span>
-                <span class="tag">음악</span>
-              </div>
-            </div>
-          </article>
-        </div>
+        <div class="grid movie-grid" id="popularGrid"></div>
       </div>
     </section>
 
@@ -701,55 +614,10 @@
         <div class="section-head">
           <div>
             <h2>장르별 추천</h2>
-            <p>취향의 출발점이 되는 장르별 큐레이션입니다. 분위기와 선호도를 빠르게 좁혀 원하는 작품을 찾아보세요.</p>
+            <p>장르를 빠르게 훑어보면서 취향을 좁혀갈 수 있게 단순하게 정리했습니다.</p>
           </div>
         </div>
-        <div class="grid genre-grid">
-          <article class="genre-card fade-up delay-1" style="--genre-bg: linear-gradient(135deg, rgba(255, 77, 109, 0.24), rgba(23, 27, 42, 0.98));">
-            <div class="genre-top">
-              <div>
-                <h3>스릴러</h3>
-                <p>긴장감 있는 전개와 반전이 강한 작품들</p>
-              </div>
-              <span class="genre-badge">강한 몰입</span>
-            </div>
-            <div class="genre-links">
-              <span>서스펜스</span>
-              <span>범죄</span>
-              <span>심리극</span>
-            </div>
-          </article>
-
-          <article class="genre-card fade-up delay-2" style="--genre-bg: linear-gradient(135deg, rgba(110, 231, 255, 0.18), rgba(23, 27, 42, 0.98));">
-            <div class="genre-top">
-              <div>
-                <h3>SF</h3>
-                <p>세계관, 기술, 상상력이 돋보이는 미래형 서사</p>
-              </div>
-              <span class="genre-badge">미래 감성</span>
-            </div>
-            <div class="genre-links">
-              <span>우주</span>
-              <span>디스토피아</span>
-              <span>AI</span>
-            </div>
-          </article>
-
-          <article class="genre-card fade-up delay-3" style="--genre-bg: linear-gradient(135deg, rgba(255, 177, 3, 0.18), rgba(23, 27, 42, 0.98));">
-            <div class="genre-top">
-              <div>
-                <h3>감성 드라마</h3>
-                <p>공감과 여운이 오래 남는 서정적인 작품</p>
-              </div>
-              <span class="genre-badge">깊은 여운</span>
-            </div>
-            <div class="genre-links">
-              <span>휴먼</span>
-              <span>가족</span>
-              <span>청춘</span>
-            </div>
-          </article>
-        </div>
+        <div class="grid genre-grid" id="genreGrid"></div>
       </div>
     </section>
 
@@ -758,40 +626,36 @@
         <div class="section-head">
           <div>
             <h2>오늘의 추천 영화</h2>
-            <p>하루 한 편, 가장 먼저 볼 만한 작품을 강조합니다. 감상 이유와 핵심 포인트를 함께 제공합니다.</p>
+            <p>하루 1편을 크게 보여주는 카드형입니다. 아래 카드를 클릭하면 추천 이유와 자세한 정보가 열립니다.</p>
           </div>
         </div>
         <div class="grid today-grid">
-          <article class="card today-feature fade-up">
-            <div class="today-art" aria-hidden="true" id="todayPoster"></div>
-            <div class="today-body">
-              <div>
-                <div class="eyebrow" id="todayLabel">Today's pick</div>
-                <h3 id="todayTitle">고요한 바다의 증언</h3>
-                <p id="todayDesc">
-                  섬세한 연출과 잔잔한 파동 같은 감정선이 인상적인 작품입니다. 시각적으로는 절제되어 있지만,
-                  장면 사이의 여백이 오히려 서사의 밀도를 높입니다.
-                </p>
-              </div>
+          <article class="card today-card" id="todayCard" role="button" tabindex="0" aria-label="오늘의 추천 영화 자세히 보기">
+            <div class="today-visual" id="todayVisual" aria-hidden="true"></div>
+            <div class="today-info">
+              <div class="eyebrow">today's pick</div>
+              <h3 id="todayTitle">고요한 바다의 증언</h3>
+              <p class="today-copy" id="todayCopy">
+                섬세한 연출과 잔잔한 감정선이 인상적인 작품입니다. 오늘은 차분하게 몰입하기 좋은 영화로 추천합니다.
+              </p>
               <div class="today-stats">
                 <div class="stat">
-                  <strong>추천 포인트</strong>
-                  <span id="todayReason">배우들의 호흡, 서정적인 촬영, 결말의 여운</span>
+                  <strong>추천 이유</strong>
+                  <span id="todayReason">배우들의 호흡과 여운이 오래 남는 결말</span>
                 </div>
                 <div class="stat">
-                  <strong>보기 좋은 대상</strong>
-                  <span id="todayAudience">감성적인 드라마를 좋아하는 관객</span>
+                  <strong>분위기</strong>
+                  <span id="todayMood">잔잔함 · 감성 · 몰입</span>
                 </div>
                 <div class="stat">
-                  <strong>한줄 키워드</strong>
-                  <span id="todayKeyword">여운 · 감정 · 바다</span>
-                </div>
-                <div class="stat">
-                  <strong>현재 평점</strong>
+                  <strong>평점</strong>
                   <span id="todayRating">9.4 / 10</span>
                 </div>
+                <div class="stat">
+                  <strong>클릭 안내</strong>
+                  <span>카드를 누르면 자세한 설명이 열립니다</span>
+                </div>
               </div>
-              <a class="btn btn-primary" href="#popular">비슷한 영화 더 보기</a>
             </div>
           </article>
         </div>
@@ -803,62 +667,292 @@
     <div class="shell footer-inner">
       <div>
         <strong>ReelWave</strong>
-        <div>영화 추천 플랫폼 메인 페이지 샘플</div>
+        <div>영화 추천 플랫폼 메인 페이지</div>
       </div>
-      <div>브라우저에서 바로 실행 가능한 단일 `index.html` 구성</div>
+      <div>단일 `index.html` 파일로 바로 실행 가능</div>
     </div>
   </footer>
 
+  <div class="modal" id="detailModal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-top">
+        <div>
+          <div class="eyebrow" id="modalEyebrow">movie detail</div>
+          <h3 id="modalTitle">제목</h3>
+          <div class="movie-meta" id="modalMeta"></div>
+        </div>
+        <button class="close-btn" id="closeModal" aria-label="닫기">✕</button>
+      </div>
+      <div class="modal-poster" id="modalPoster" aria-hidden="true"></div>
+      <p id="modalDesc" class="today-copy"></p>
+      <div class="detail-grid">
+        <div class="detail-box">
+          <strong>이 영화의 포인트</strong>
+          <span id="modalPoint"></span>
+        </div>
+        <div class="detail-box">
+          <strong>어울리는 사람</strong>
+          <span id="modalAudience"></span>
+        </div>
+      </div>
+      <div class="detail-tags" id="modalTags" style="margin-top: 14px;"></div>
+      <ul class="detail-list" id="modalList"></ul>
+    </div>
+  </div>
+
   <script>
     (function () {
-      const picks = [
+      const movies = [
         {
-          title: "고요한 바다의 증언",
-          desc: "섬세한 연출과 잔잔한 파동 같은 감정선이 인상적인 작품입니다. 시각적으로는 절제되어 있지만, 장면 사이의 여백이 오히려 서사의 밀도를 높입니다.",
-          reason: "배우들의 호흡, 서정적인 촬영, 결말의 여운",
-          audience: "감성적인 드라마를 좋아하는 관객",
-          keyword: "여운 · 감정 · 바다",
-          rating: "9.4 / 10",
-          poster: "linear-gradient(180deg, rgba(0,0,0,.14), rgba(0,0,0,.72)), radial-gradient(circle at 20% 20%, rgba(110,231,255,.32), transparent 24%), radial-gradient(circle at 80% 30%, rgba(255,77,109,.22), transparent 28%), linear-gradient(135deg, #10223b, #05070d)"
+          title: "노을의 경계선",
+          genre: "미스터리 · 드라마",
+          rating: "9.2",
+          short: "감정선이 정교하게 쌓이는 미스터리 드라마.",
+          desc: "미스터리와 감정선이 자연스럽게 이어지는 작품입니다. 과한 장치보다 인물의 표정과 대사에 집중해, 끝까지 조용한 긴장감을 유지합니다.",
+          point: "절제된 연출과 안정적인 속도로 몰입감이 좋습니다.",
+          audience: "감정이 살아 있는 미스터리와 드라마를 좋아하는 사람",
+          tags: ["미스터리", "드라마", "몰입감"],
+          bullets: ["잔잔한 긴장감", "배우들의 호흡", "여운이 남는 결말"],
+          poster: "linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.72)), radial-gradient(circle at top, #ff7b54, #1b1f31 58%, #090b12 100%)"
         },
         {
-          title: "별빛 아래의 추적자",
-          desc: "도시의 밤을 배경으로 한 스타일리시한 스릴러입니다. 빠른 리듬과 선명한 색감, 그리고 예상 밖의 전개가 화면을 계속 붙잡아 둡니다.",
-          reason: "강렬한 오프닝, 빠른 템포, 반전 구조",
-          audience: "스릴러와 범죄극을 선호하는 관객",
-          keyword: "추적 · 반전 · 네온",
-          rating: "9.1 / 10",
-          poster: "linear-gradient(180deg, rgba(0,0,0,.14), rgba(0,0,0,.72)), radial-gradient(circle at 22% 20%, rgba(255,77,109,.28), transparent 24%), radial-gradient(circle at 78% 26%, rgba(110,231,255,.18), transparent 26%), linear-gradient(135deg, #211024, #07090f)"
+          title: "사라진 궤도",
+          genre: "SF · 감성",
+          rating: "8.9",
+          short: "차분한 분위기의 감성 SF.",
+          desc: "우주를 배경으로 하지만 핵심은 관계와 선택입니다. 화려한 액션보다 공기감 있는 연출로 감정을 천천히 끌어올립니다.",
+          point: "공간과 감정을 함께 보여주는 균형이 좋습니다.",
+          audience: "과하지 않은 SF와 인간적인 이야기를 원하는 사람",
+          tags: ["SF", "드라마", "감성"],
+          bullets: ["넓은 세계관", "차분한 전개", "잔잔한 울림"],
+          poster: "linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.72)), radial-gradient(circle at top, #6ee7ff, #1a2440 60%, #090b12 100%)"
         },
         {
-          title: "마지막 여름의 기록",
-          desc: "청춘의 불안과 선택을 부드럽고 진실하게 담아낸 드라마입니다. 한 편의 편지처럼 천천히 다가와 오래 남는 정서를 만들어 줍니다.",
-          reason: "정서적 공감, 잔잔한 음악, 정교한 대사",
-          audience: "조용하고 따뜻한 성장 서사를 좋아하는 관객",
-          keyword: "청춘 · 성장 · 기록",
-          rating: "9.3 / 10",
-          poster: "linear-gradient(180deg, rgba(0,0,0,.14), rgba(0,0,0,.72)), radial-gradient(circle at 24% 20%, rgba(255,177,3,.28), transparent 22%), radial-gradient(circle at 70% 28%, rgba(255,77,109,.18), transparent 24%), linear-gradient(135deg, #2a1d10, #090b12)"
+          title: "도시의 밤, 첫 번째 미소",
+          genre: "로맨스 · 코미디",
+          rating: "8.7",
+          short: "가볍게 보기 좋은 밝은 로맨스.",
+          desc: "도심의 밤을 배경으로 한 가벼운 로맨스 코미디입니다. 부담 없이 보기 좋고, 밝은 대사와 따뜻한 분위기가 장점입니다.",
+          point: "무겁지 않고 기분 전환용으로 보기 좋습니다.",
+          audience: "편하게 웃으면서 볼 수 있는 영화를 찾는 사람",
+          tags: ["로맨스", "코미디", "힐링"],
+          bullets: ["가벼운 템포", "밝은 분위기", "편안한 감상"],
+          poster: "linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.72)), radial-gradient(circle at top, #ffd166, #39291a 60%, #090b12 100%)"
+        },
+        {
+          title: "마지막 극장",
+          genre: "드라마 · 예술",
+          rating: "9.0",
+          short: "영화 사랑을 담은 잔잔한 드라마.",
+          desc: "영화라는 매체를 향한 애정이 느껴지는 작품입니다. 조용한 장면, 길게 남는 음악, 담담한 대사가 전체 분위기를 완성합니다.",
+          point: "영화를 좋아하는 사람에게 특히 잘 맞는 작품입니다.",
+          audience: "예술영화와 잔잔한 드라마를 선호하는 사람",
+          tags: ["드라마", "예술", "음악"],
+          bullets: ["따뜻한 시선", "차분한 음악", "오래 남는 장면"],
+          poster: "linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.72)), radial-gradient(circle at top, #8d6bff, #251e40 60%, #090b12 100%)"
         }
       ];
 
-      const pick = picks[new Date().getDate() % picks.length];
-      const poster = document.getElementById("todayPoster");
-      const title = document.getElementById("todayTitle");
-      const desc = document.getElementById("todayDesc");
-      const reason = document.getElementById("todayReason");
-      const audience = document.getElementById("todayAudience");
-      const keyword = document.getElementById("todayKeyword");
-      const rating = document.getElementById("todayRating");
-      const label = document.getElementById("todayLabel");
+      const genres = [
+        {
+          title: "스릴러",
+          badge: "강한 몰입",
+          desc: "긴장감이 필요한 날에 어울리는 장르입니다.",
+          tags: ["서스펜스", "범죄", "심리극"],
+          point: "반전과 긴장감을 균형 있게 즐길 수 있습니다."
+        },
+        {
+          title: "SF",
+          badge: "미래 감성",
+          desc: "상상력과 세계관이 중요한 작품을 찾을 때 좋습니다.",
+          tags: ["우주", "디스토피아", "AI"],
+          point: "세계관이 넓고 분위기가 선명한 작품을 모았습니다."
+        },
+        {
+          title: "감성 드라마",
+          badge: "깊은 여운",
+          desc: "마음이 천천히 가라앉는 서정적인 작품들입니다.",
+          tags: ["휴먼", "가족", "청춘"],
+          point: "조용하지만 오래 남는 이야기를 원할 때 적합합니다."
+        }
+      ];
 
-      poster.style.background = pick.poster;
-      title.textContent = pick.title;
-      desc.textContent = pick.desc;
-      reason.textContent = pick.reason;
-      audience.textContent = pick.audience;
-      keyword.textContent = pick.keyword;
-      rating.textContent = pick.rating;
-      label.textContent = "Today's pick";
+      const todayPicks = [
+        {
+          title: "고요한 바다의 증언",
+          copy: "섬세한 연출과 잔잔한 감정선이 인상적인 작품입니다. 오늘은 차분하게 몰입하기 좋은 영화로 추천합니다.",
+          reason: "배우들의 호흡과 여운이 오래 남는 결말",
+          mood: "잔잔함 · 감성 · 몰입",
+          rating: "9.4 / 10",
+          desc: "조용한 바다를 배경으로 사람 사이의 기억과 진심을 따라가는 영화입니다. 큰 사건보다 작은 표정과 말의 온도가 더 크게 다가옵니다.",
+          point: "감정을 천천히 쌓아 올리는 방식이 아주 안정적입니다.",
+          audience: "오늘은 무리 없이 깊이 있는 드라마를 보고 싶은 사람",
+          tags: ["오늘의 추천", "드라마", "감성"],
+          bullets: ["한 편을 크게 보여주는 카드형", "클릭하면 상세 정보 열림", "하루 1편 추천"],
+          poster: "linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.72)), radial-gradient(circle at top, rgba(110,231,255,.30), transparent 25%), radial-gradient(circle at 80% 28%, rgba(255,90,111,.20), transparent 24%), linear-gradient(135deg, #10223b, #05070d)"
+        },
+        {
+          title: "별빛 아래의 추적자",
+          copy: "도시의 밤을 배경으로 한 스타일리시한 스릴러입니다. 빠른 전개와 선명한 분위기가 강합니다.",
+          reason: "강한 오프닝과 빠른 템포",
+          mood: "추적 · 반전 · 네온",
+          rating: "9.1 / 10",
+          desc: "빠른 리듬과 명확한 구조를 좋아하는 사람에게 어울리는 작품입니다. 보는 내내 긴장감이 유지됩니다.",
+          point: "반전이 선명하고 템포가 좋아 지루할 틈이 적습니다.",
+          audience: "스릴러와 범죄극을 선호하는 사람",
+          tags: ["오늘의 추천", "스릴러", "반전"],
+          bullets: ["빠른 전개", "강한 색감", "도시적 분위기"],
+          poster: "linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.72)), radial-gradient(circle at top, rgba(255,90,111,.26), transparent 26%), radial-gradient(circle at 78% 26%, rgba(110,231,255,.18), transparent 24%), linear-gradient(135deg, #211024, #07090f)"
+        }
+      ];
+
+      const popularGrid = document.getElementById("popularGrid");
+      const genreGrid = document.getElementById("genreGrid");
+      const todayCard = document.getElementById("todayCard");
+      const todayVisual = document.getElementById("todayVisual");
+      const todayTitle = document.getElementById("todayTitle");
+      const todayCopy = document.getElementById("todayCopy");
+      const todayReason = document.getElementById("todayReason");
+      const todayMood = document.getElementById("todayMood");
+      const todayRating = document.getElementById("todayRating");
+      const modal = document.getElementById("detailModal");
+      const closeModal = document.getElementById("closeModal");
+      const modalEyebrow = document.getElementById("modalEyebrow");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalMeta = document.getElementById("modalMeta");
+      const modalPoster = document.getElementById("modalPoster");
+      const modalDesc = document.getElementById("modalDesc");
+      const modalPoint = document.getElementById("modalPoint");
+      const modalAudience = document.getElementById("modalAudience");
+      const modalTags = document.getElementById("modalTags");
+      const modalList = document.getElementById("modalList");
+
+      let activeTodayIndex = new Date().getDate() % todayPicks.length;
+
+      function createTagRow(tags) {
+        return tags.map((tag) => `<span class="tag">${tag}</span>`).join("");
+      }
+
+      function renderPopular() {
+        popularGrid.innerHTML = movies.map((movie, index) => `
+          <article class="card movie-card" role="button" tabindex="0" data-kind="movie" data-index="${index}" aria-label="${movie.title} 자세히 보기">
+            <div class="poster" style="--poster: ${movie.poster};"></div>
+            <div class="body">
+              <h3>${movie.title}</h3>
+              <div class="movie-meta">
+                <span>${movie.genre}</span>
+                <span class="rating">${movie.rating}</span>
+              </div>
+              <p>${movie.short}</p>
+              <span class="mini-action">자세히 보기</span>
+            </div>
+          </article>
+        `).join("");
+      }
+
+      function renderGenres() {
+        genreGrid.innerHTML = genres.map((genre, index) => `
+          <article class="card genre-card" role="button" tabindex="0" data-kind="genre" data-index="${index}" aria-label="${genre.title} 추천 자세히 보기">
+            <div class="genre-head">
+              <div>
+                <h3>${genre.title}</h3>
+                <p>${genre.desc}</p>
+              </div>
+              <span class="genre-badge">${genre.badge}</span>
+            </div>
+            <div>
+              <div class="tag-row">${createTagRow(genre.tags)}</div>
+              <div class="mini-action" style="margin-top: 14px;">자세히 보기</div>
+            </div>
+          </article>
+        `).join("");
+      }
+
+      function applyToday(index) {
+        activeTodayIndex = index;
+        const pick = todayPicks[index];
+        todayVisual.style.setProperty("--today-poster", pick.poster);
+        todayTitle.textContent = pick.title;
+        todayCopy.textContent = pick.copy;
+        todayReason.textContent = pick.reason;
+        todayMood.textContent = pick.mood;
+        todayRating.textContent = pick.rating;
+      }
+
+      function openModal(item) {
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        modalEyebrow.textContent = item.genre || "today's pick";
+        modalTitle.textContent = item.title;
+        modalMeta.innerHTML = `
+          <span>${item.genre || item.mood || ""}</span>
+          <span class="rating">${item.rating || ""}</span>
+        `;
+        modalPoster.style.setProperty("--modal-poster", item.poster);
+        modalDesc.textContent = item.desc;
+        modalPoint.textContent = item.point;
+        modalAudience.textContent = item.audience;
+        modalTags.innerHTML = createTagRow(item.tags || []);
+        modalList.innerHTML = (item.bullets || []).map((bullet) => `<li>${bullet}</li>`).join("");
+      }
+
+      function closeDetail() {
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+
+      document.addEventListener("click", (event) => {
+        const card = event.target.closest("[data-kind][data-index]");
+        if (!card) {
+          if (event.target === modal) closeDetail();
+          return;
+        }
+
+        const kind = card.dataset.kind;
+        const index = Number(card.dataset.index);
+        if (kind === "movie") {
+          openModal(movies[index]);
+        } else if (kind === "genre") {
+          openModal({
+            title: genres[index].title,
+            genre: genres[index].badge,
+            rating: "추천",
+            desc: genres[index].point,
+            point: genres[index].point,
+            audience: "장르에 맞는 작품을 빠르게 찾고 싶은 사람",
+            tags: genres[index].tags,
+            bullets: ["장르별 선별", "간단한 비교", "클릭 시 상세 열기"],
+            poster: movies[index % movies.length].poster
+          });
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeDetail();
+        const active = document.activeElement;
+        if (!active || !active.matches("[data-kind][data-index], #todayCard")) return;
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          active.click();
+        }
+      });
+
+      todayCard.addEventListener("click", () => openModal(todayPicks[activeTodayIndex]));
+      todayCard.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openModal(todayPicks[activeTodayIndex]);
+        }
+      });
+
+      closeModal.addEventListener("click", closeDetail);
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeDetail();
+      });
+
+      renderPopular();
+      renderGenres();
+      applyToday(activeTodayIndex);
     })();
   </script>
 </body>

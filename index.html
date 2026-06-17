@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>영덕 2박 3일 여행일정 | 바다와 산, 먹거리</title>
-  <meta name="description" content="영덕 2박 3일 여행일정 소개 페이지. 블루로드, 해수욕장, 해안 산책, 지역 먹거리와 휴식 포인트를 한눈에 볼 수 있습니다." />
+  <title>소설 추천 모음 | 판타지 · 스릴러 · 문학</title>
+  <meta name="description" content="판타지 소설, 스릴러 소설, 문학 소설을 소개하고 추천하는 단일 index.html 페이지입니다." />
   <style>
     :root {
       color-scheme: dark;
-      --bg: #08111a;
-      --panel: #0f1823;
-      --panel-2: #132131;
+      --bg: #090b12;
+      --panel: #111522;
+      --panel-2: #161b2b;
       --line: rgba(255, 255, 255, 0.08);
-      --text: #eef4fb;
-      --muted: #a7b6c9;
-      --accent: #74d2ff;
-      --accent-2: #7c8cff;
-      --accent-3: #ffb86b;
-      --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
-      --radius-xl: 30px;
+      --text: #f4f6fb;
+      --muted: #a8afc3;
+      --accent: #7dd3fc;
+      --accent-2: #c084fc;
+      --accent-3: #fbbf24;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+      --radius-xl: 32px;
       --radius-lg: 22px;
       --radius-md: 16px;
     }
@@ -29,14 +29,15 @@
       margin: 0;
       min-height: 100vh;
       background:
-        radial-gradient(circle at top left, rgba(116, 210, 255, 0.18), transparent 28%),
-        radial-gradient(circle at top right, rgba(124, 140, 255, 0.16), transparent 28%),
-        linear-gradient(180deg, #071019 0%, #08111a 46%, #071019 100%);
+        radial-gradient(circle at top left, rgba(125, 211, 252, 0.14), transparent 28%),
+        radial-gradient(circle at top right, rgba(192, 132, 252, 0.14), transparent 30%),
+        linear-gradient(180deg, #080b12 0%, #0b0f18 50%, #080b12 100%);
       color: var(--text);
       font-family: "Segoe UI", "Pretendard", "Apple SD Gothic Neo", sans-serif;
     }
 
     a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
 
     .shell {
       width: min(1180px, calc(100% - 32px));
@@ -47,8 +48,8 @@
       position: sticky;
       top: 0;
       z-index: 30;
-      background: rgba(7, 16, 25, 0.72);
       backdrop-filter: blur(16px);
+      background: rgba(8, 11, 18, 0.74);
       border-bottom: 1px solid var(--line);
     }
 
@@ -74,15 +75,15 @@
       height: 40px;
       border-radius: 14px;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 14px 28px rgba(116, 210, 255, 0.2);
       display: grid;
       place-items: center;
+      box-shadow: 0 14px 28px rgba(125, 211, 252, 0.18);
     }
 
     .brand-mark::before {
       content: "✦";
-      font-size: 0.92rem;
       transform: translateY(-1px);
+      font-size: 0.92rem;
     }
 
     .nav {
@@ -106,39 +107,39 @@
     }
 
     .hero {
-      padding: 28px 0 16px;
+      padding: 28px 0 12px;
     }
 
     .hero-card {
       position: relative;
       overflow: hidden;
-      border-radius: clamp(24px, 3vw, 36px);
       min-height: 520px;
-      background:
-        linear-gradient(180deg, rgba(10, 18, 27, 0.78), rgba(9, 16, 24, 0.82)),
-        radial-gradient(circle at 22% 18%, rgba(116, 210, 255, 0.18), transparent 22%),
-        radial-gradient(circle at 78% 22%, rgba(255, 184, 107, 0.12), transparent 20%),
-        linear-gradient(135deg, #0d1824, #09101a);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: clamp(24px, 3vw, 36px);
+      border: 1px solid var(--line);
       box-shadow: var(--shadow);
+      background:
+        linear-gradient(180deg, rgba(17, 21, 34, 0.84), rgba(12, 15, 24, 0.86)),
+        radial-gradient(circle at 22% 18%, rgba(125, 211, 252, 0.18), transparent 24%),
+        radial-gradient(circle at 78% 26%, rgba(251, 191, 36, 0.12), transparent 22%),
+        linear-gradient(135deg, #101421, #0a0d15);
     }
 
     .hero-content {
       position: relative;
       z-index: 1;
       min-height: 520px;
-      padding: clamp(26px, 5vw, 64px);
+      padding: clamp(28px, 5vw, 64px);
       display: flex;
       flex-direction: column;
       justify-content: end;
-      max-width: 760px;
+      max-width: 780px;
     }
 
     .eyebrow {
-      width: fit-content;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      width: fit-content;
       padding: 8px 13px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.06);
@@ -186,12 +187,12 @@
 
     .btn:hover { transform: translateY(-2px); }
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #93f0ff);
+      background: linear-gradient(135deg, var(--accent), #a5f3fc);
       color: #04111b;
     }
     .btn-secondary {
       background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(255, 255, 255, 0.08);
+      border-color: var(--line);
       color: var(--text);
     }
 
@@ -233,7 +234,7 @@
 
     .section-head p {
       margin: 0;
-      max-width: 60ch;
+      max-width: 64ch;
       color: var(--muted);
       line-height: 1.75;
     }
@@ -244,19 +245,19 @@
     }
 
     .summary-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    .day-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .info-grid {
-      grid-template-columns: 1.15fr 0.85fr;
+    .recommend-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .detail-grid {
+      grid-template-columns: 1.2fr 0.8fr;
     }
 
     .card {
-      background: linear-gradient(180deg, rgba(18, 27, 40, 0.98), rgba(12, 19, 29, 0.98));
+      background: linear-gradient(180deg, rgba(20, 25, 39, 0.98), rgba(13, 17, 28, 0.98));
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
       overflow: hidden;
@@ -272,30 +273,20 @@
 
     .summary-card {
       padding: 18px;
-      min-height: 144px;
+      min-height: 150px;
+    }
+
+    .summary-card strong,
+    .story-card h3,
+    .detail-card h3 {
+      display: block;
+      margin: 0;
+      color: #fff;
     }
 
     .summary-card strong {
-      display: block;
-      font-size: 1.04rem;
       margin-bottom: 8px;
-    }
-
-    .summary-card span,
-    .summary-card p,
-    .body p,
-    .list li,
-    .footer {
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .summary-value {
-      font-size: 1.45rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      color: #fff;
-      margin: 2px 0 8px;
+      font-size: 1.04rem;
     }
 
     .icon {
@@ -310,12 +301,31 @@
       font-size: 1rem;
     }
 
-    .day-card {
-      padding: 18px;
-      min-height: 100%;
+    .summary-value {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin: 2px 0 8px;
     }
 
-    .day-head {
+    .summary-card span,
+    .summary-card p,
+    .story-card p,
+    .detail-card p,
+    .list li,
+    .footer {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .story-card {
+      padding: 18px;
+      min-height: 100%;
+      cursor: pointer;
+    }
+
+    .story-head {
       display: flex;
       align-items: start;
       justify-content: space-between;
@@ -323,108 +333,24 @@
       margin-bottom: 10px;
     }
 
-    .day-head h3 {
-      margin: 0;
-      font-size: 1.15rem;
+    .story-head h3 {
+      font-size: 1.16rem;
     }
 
     .badge {
       padding: 7px 10px;
       border-radius: 999px;
-      background: rgba(116, 210, 255, 0.12);
-      color: #cbf5ff;
+      background: rgba(125, 211, 252, 0.12);
+      color: #d2f4ff;
       font-size: 0.8rem;
       white-space: nowrap;
     }
 
-    .time-line {
-      margin-top: 14px;
-      display: grid;
-      gap: 10px;
-    }
-
-    .step {
-      padding: 12px 12px 12px 14px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .step strong {
-      display: block;
-      margin-bottom: 4px;
-      color: var(--text);
-    }
-
-    .route-card {
-      padding: 22px;
-    }
-
-    .route-card h3 {
-      margin: 0 0 10px;
-      font-size: 1.2rem;
-    }
-
-    .route-card p {
-      margin: 0 0 14px;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .route-list {
-      margin: 0;
-      padding-left: 18px;
-      color: var(--text);
-    }
-
-    .route-list li + li { margin-top: 8px; }
-
-    .photo-panel {
-      min-height: 100%;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      position: relative;
-      background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.74)),
-        radial-gradient(circle at 18% 18%, rgba(116, 210, 255, 0.26), transparent 26%),
-        radial-gradient(circle at 82% 22%, rgba(255, 184, 107, 0.16), transparent 22%),
-        linear-gradient(135deg, #0f2030, #09111a);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: var(--shadow);
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .photo-panel::after {
-      content: "";
-      position: absolute;
-      inset: auto -20px -20px auto;
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(116, 210, 255, 0.24), transparent 65%);
-      pointer-events: none;
-    }
-
-    .photo-panel h3 {
-      margin: 0;
-      font-size: 1.45rem;
-      letter-spacing: -0.03em;
-    }
-
-    .photo-panel p {
-      margin: 8px 0 0;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .tag-row {
+    .genre-bar {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      margin-top: 14px;
     }
 
     .tag {
@@ -434,6 +360,46 @@
       border: 1px solid rgba(255, 255, 255, 0.06);
       color: #d8e1ec;
       font-size: 0.82rem;
+    }
+
+    .detail-card {
+      padding: 22px;
+    }
+
+    .detail-card h3 {
+      font-size: 1.25rem;
+    }
+
+    .detail-card p {
+      margin: 10px 0 0;
+    }
+
+    .detail-list {
+      margin: 16px 0 0;
+      padding-left: 18px;
+    }
+
+    .detail-list li + li { margin-top: 8px; }
+
+    .quote-box {
+      padding: 20px;
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02)),
+        linear-gradient(135deg, rgba(192, 132, 252, 0.12), rgba(125, 211, 252, 0.08));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      min-height: 100%;
+    }
+
+    .quote-box strong {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .quote-box p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
     }
 
     .footer {
@@ -455,36 +421,99 @@
       color: var(--text);
     }
 
-    .tabs {
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(4, 7, 12, 0.72);
+      padding: 20px;
+      z-index: 40;
+    }
+
+    .modal.open { display: flex; }
+
+    .modal-panel {
+      width: min(760px, 100%);
+      max-height: min(85vh, 880px);
+      overflow: auto;
+      border-radius: 26px;
+      background: linear-gradient(180deg, #151b2a, #0f1420);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 36px 80px rgba(0, 0, 0, 0.45);
+      padding: 22px;
+    }
+
+    .modal-top {
       display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin: 0 0 16px;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 16px;
     }
 
-    .tab {
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--muted);
+    .modal-top h3 {
+      margin: 0;
+      font-size: 1.7rem;
+      letter-spacing: -0.03em;
+    }
+
+    .close-btn {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
       cursor: pointer;
-      transition: background 160ms ease, color 160ms ease, transform 160ms ease, border-color 160ms ease;
     }
 
-    .tab:hover { transform: translateY(-1px); }
-    .tab.active {
-      color: #06101a;
-      background: linear-gradient(135deg, var(--accent), #98f0ff);
-      border-color: transparent;
+    .modal-meta {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .modal-poster {
+      height: 220px;
+      border-radius: 22px;
+      margin: 14px 0 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.74)),
+        var(--modal-poster);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .detail-grid-inner {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 16px;
+    }
+
+    .box {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .box strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 6px;
     }
 
     .hidden { display: none !important; }
 
     @media (max-width: 1024px) {
-      .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .day-grid,
-      .info-grid { grid-template-columns: 1fr; }
+      .summary-grid,
+      .recommend-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .detail-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 720px) {
@@ -493,8 +522,10 @@
       .nav { justify-content: flex-start; }
       .hero-card { min-height: 0; }
       .hero-content { min-height: 0; }
-      .summary-grid { grid-template-columns: 1fr; }
-      .route-card, .photo-panel, .day-card, .summary-card { padding: 16px; }
+      .summary-grid,
+      .recommend-grid,
+      .detail-grid-inner { grid-template-columns: 1fr; }
+      .summary-card, .story-card, .detail-card { padding: 16px; }
     }
   </style>
 </head>
@@ -503,13 +534,13 @@
     <div class="shell topbar-inner">
       <a class="brand" href="#top">
         <span class="brand-mark" aria-hidden="true"></span>
-        <span>Yeongdeok Trip</span>
+        <span>Book Atlas</span>
       </a>
       <nav class="nav" aria-label="주요 메뉴">
-        <a href="#summary">요약</a>
-        <a href="#days">일정</a>
-        <a href="#route">코스</a>
-        <a href="#tips">팁</a>
+        <a href="#summary">핵심</a>
+        <a href="#recommend">추천</a>
+        <a href="#today">오늘의 한 권</a>
+        <a href="#guide">읽기 가이드</a>
       </nav>
     </div>
   </header>
@@ -519,20 +550,21 @@
       <div class="shell">
         <div class="hero-card">
           <div class="hero-content">
-            <div class="eyebrow">2 nights · 3 days · east coast</div>
-            <h1>영덕에서 쉬고, 걷고, 먹는 2박 3일.</h1>
+            <div class="eyebrow">fantasy · thriller · literary</div>
+            <h1>장르의 결이 다른 소설을 한눈에.</h1>
             <p>
-              영덕문화관광 포털의 일정별 여행, 블루로드, 해수욕장, 산, 공원, 음식·숙박·특산물 흐름을 바탕으로
-              누구나 따라가기 쉬운 2박 3일 일정을 한 페이지에 정리했습니다.
+              환상적인 상상력, 긴장감 있는 전개, 깊은 문장과 여운까지.
+              이 페이지는 판타지 소설, 스릴러 소설, 문학 소설을 소개하고 추천하기 위해
+              한 화면에 보기 좋게 정리한 단일 `index.html`입니다.
             </p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#days">일정 바로 보기</a>
-              <a class="btn btn-secondary" href="#route">추천 코스 보기</a>
+              <a class="btn btn-primary" href="#recommend">추천 목록 보기</a>
+              <a class="btn btn-secondary" href="#today">오늘의 한 권 보기</a>
             </div>
             <div class="hero-meta">
-              <span class="chip">바다 산책</span>
-              <span class="chip">로컬 먹거리</span>
-              <span class="chip">천천히 보는 여행</span>
+              <span class="chip">설명은 짧고 핵심적으로</span>
+              <span class="chip">클릭하면 자세히</span>
+              <span class="chip">모바일 반응형</span>
             </div>
           </div>
         </div>
@@ -543,242 +575,366 @@
       <div class="shell">
         <div class="section-head">
           <div>
-            <h2>여행 한눈에 보기</h2>
-            <p>복잡하지 않게 핵심만 먼저 보이도록 정리했습니다. 실제 이동 시간과 영업 정보는 출발 전에 한 번 더 확인해 주세요.</p>
+            <h2>세 장르의 분위기</h2>
+            <p>먼저 장르의 결을 간단히 구분해 두면, 어떤 책이 나에게 맞는지 고르기 쉬워집니다.</p>
           </div>
         </div>
         <div class="grid summary-grid">
           <article class="card summary-card">
-            <div class="icon">🌊</div>
-            <strong>여행 분위기</strong>
-            <div class="summary-value">바다 + 휴식</div>
-            <span>블루로드와 해안 산책이 중심인 느긋한 일정</span>
+            <div class="icon">🧙</div>
+            <strong>판타지 소설</strong>
+            <div class="summary-value">상상력</div>
+            <span>새로운 세계, 마법, 모험, 운명 같은 키워드가 중심입니다.</span>
           </article>
           <article class="card summary-card">
-            <div class="icon">🧭</div>
-            <strong>추천 방식</strong>
-            <div class="summary-value">자가용 or 렌터카</div>
-            <span>코스 간 이동이 편해서 여유 있게 움직이기 좋습니다</span>
+            <div class="icon">🕯️</div>
+            <strong>스릴러 소설</strong>
+            <div class="summary-value">긴장감</div>
+            <span>단서가 하나씩 드러나는 구조와 빠른 몰입감이 강점입니다.</span>
           </article>
           <article class="card summary-card">
-            <div class="icon">🍽️</div>
-            <strong>먹거리 포인트</strong>
-            <div class="summary-value">해산물</div>
-            <span>항구 주변 식사와 지역 특산물을 함께 즐기기 좋습니다</span>
-          </article>
-          <article class="card summary-card">
-            <div class="icon">🌅</div>
-            <strong>추천 시간대</strong>
-            <div class="summary-value">아침 + 해질녘</div>
-            <span>바다 풍경이 가장 예쁜 시간에 맞춰 일정을 짰습니다</span>
+            <div class="icon">📚</div>
+            <strong>문학 소설</strong>
+            <div class="summary-value">여운</div>
+            <span>문장, 인물, 정서가 오래 남는 작품을 좋아할 때 잘 맞습니다.</span>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="days">
+    <section class="section" id="recommend">
       <div class="shell">
         <div class="section-head">
           <div>
-            <h2>2박 3일 일정</h2>
-            <p>화면에는 간단히 보이고, 버튼을 누르면 날짜별 흐름을 빠르게 볼 수 있습니다.</p>
+            <h2>장르별 추천 소설</h2>
+            <p>화면에는 짧게 보이지만, 카드를 클릭하면 더 자세한 설명을 볼 수 있습니다.</p>
           </div>
         </div>
-
-        <div class="tabs" role="tablist" aria-label="일정 탭">
-          <button class="tab active" data-day="1" role="tab" aria-selected="true">1일차</button>
-          <button class="tab" data-day="2" role="tab" aria-selected="false">2일차</button>
-          <button class="tab" data-day="3" role="tab" aria-selected="false">3일차</button>
-        </div>
-
-        <div class="grid day-grid">
-          <article class="card day-card" data-panel="1">
-            <div class="day-head">
-              <div>
-                <h3>1일차 · 도착과 해안 적응</h3>
-                <p>여행 첫날은 무리하지 않고 바다를 먼저 봅니다.</p>
-              </div>
-              <span class="badge">가볍게 시작</span>
-            </div>
-            <div class="time-line">
-              <div class="step">
-                <strong>오후 도착</strong>
-                숙소 체크인 후 짐을 풀고 주변을 천천히 둘러봅니다.
-              </div>
-              <div class="step">
-                <strong>저녁 산책</strong>
-                항구나 해안 근처에서 해질녘 바다 풍경을 즐깁니다.
-              </div>
-              <div class="step">
-                <strong>저녁 식사</strong>
-                항구 주변 식당에서 해산물 위주로 편하게 식사합니다.
-              </div>
-            </div>
-          </article>
-
-          <article class="card day-card" data-panel="2">
-            <div class="day-head">
-              <div>
-                <h3>2일차 · 블루로드와 바다 코스</h3>
-                <p>영덕의 대표 이미지인 해안길을 제대로 느끼는 날입니다.</p>
-              </div>
-              <span class="badge">핵심 일정</span>
-            </div>
-            <div class="time-line">
-              <div class="step">
-                <strong>아침</strong>
-                가벼운 식사 후 블루로드 구간을 걷거나 짧게 둘러봅니다.
-              </div>
-              <div class="step">
-                <strong>오전~오후</strong>
-                해수욕장, 전망 포인트, 공원형 산책 코스를 이어서 봅니다.
-              </div>
-              <div class="step">
-                <strong>저녁</strong>
-                숙소로 돌아와 휴식하고, 다음 날을 위해 일찍 쉬어갑니다.
-              </div>
-            </div>
-          </article>
-
-          <article class="card day-card" data-panel="3">
-            <div class="day-head">
-              <div>
-                <h3>3일차 · 여유 있게 마무리</h3>
-                <p>돌아가기 전, 영덕의 풍경을 한 번 더 담는 날입니다.</p>
-              </div>
-              <span class="badge">가볍게 정리</span>
-            </div>
-            <div class="time-line">
-              <div class="step">
-                <strong>아침 체크아웃</strong>
-                느긋하게 체크아웃하고 마지막 산책을 합니다.
-              </div>
-              <div class="step">
-                <strong>짧은 코스</strong>
-                앞서 못 본 해안길이나 가까운 전망 포인트를 들릅니다.
-              </div>
-              <div class="step">
-                <strong>귀가 전 식사</strong>
-                지역 특산물이나 간단한 점심으로 여행을 마무리합니다.
-              </div>
-            </div>
-          </article>
-        </div>
+        <div class="grid recommend-grid" id="recommendGrid"></div>
       </div>
     </section>
 
-    <section class="section" id="route">
+    <section class="section" id="today">
       <div class="shell">
         <div class="section-head">
           <div>
-            <h2>추천 코스와 방문 이유</h2>
-            <p>복잡한 설명보다, 왜 이 코스를 잡았는지 바로 이해되게 만들었습니다.</p>
+            <h2>오늘의 한 권</h2>
+            <p>하루에 한 권을 크게 보여주는 카드입니다. 오늘 읽을 책을 빠르게 정할 때 유용합니다.</p>
           </div>
         </div>
-
-        <div class="grid info-grid">
-          <article class="card route-card">
-            <h3>이 일정으로 짠 이유</h3>
-            <p>
-              영덕문화관광 포털은 일정별 여행, 블루로드, 해수욕장, 산, 공원, 음식·숙박·특산물 같은 여행 축을 함께 보여 줍니다.
-              그래서 이 페이지도 "도착-걷기-먹기-휴식" 순서로 부담 없이 즐길 수 있게 구성했습니다.
+        <div class="grid detail-grid">
+          <article class="card detail-card" id="todayCard" role="button" tabindex="0" aria-label="오늘의 추천 도서 자세히 보기">
+            <div class="eyebrow">today's pick</div>
+            <h3 id="todayTitle">바람이 지나간 뒤의 도서관</h3>
+            <p id="todayCopy">
+              조용한 문장과 섬세한 감정이 중심인 문학 소설입니다. 한 장씩 천천히 읽기 좋은 작품으로 추천합니다.
             </p>
-            <ul class="route-list">
-              <li>첫날은 이동 후 가볍게 적응하기</li>
-              <li>둘째 날은 블루로드와 바다 경관 집중</li>
-              <li>셋째 날은 여유 있게 마무리하기</li>
-              <li>식사와 휴식 시간을 넉넉하게 두기</li>
+            <div class="genre-bar" id="todayTags">
+              <span class="tag">문학</span>
+              <span class="tag">정서</span>
+              <span class="tag">여운</span>
+            </div>
+            <div class="detail-grid-inner">
+              <div class="box">
+                <strong>추천 이유</strong>
+                <span id="todayReason">문장 자체가 느린 호흡을 가지고 있어, 조용한 시간과 잘 어울립니다.</span>
+              </div>
+              <div class="box">
+                <strong>읽기 분위기</strong>
+                <span id="todayMood">잔잔함 · 사색 · 몰입</span>
+              </div>
+              <div class="box">
+                <strong>이런 분께</strong>
+                <span id="todayAudience">소설의 분위기와 여운을 중요하게 보는 독자</span>
+              </div>
+              <div class="box">
+                <strong>평점</strong>
+                <span id="todayRating">9.4 / 10</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="guide">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <h2>읽기 가이드</h2>
+            <p>어떤 소설을 먼저 읽을지 고민될 때 도움이 되는 아주 짧은 기준입니다.</p>
+          </div>
+        </div>
+        <div class="grid detail-grid">
+          <article class="card detail-card">
+            <h3>어떤 장르부터 고를까?</h3>
+            <ul class="detail-list">
+              <li>상상력이 필요하면 판타지 소설</li>
+              <li>빠른 전개가 끌리면 스릴러 소설</li>
+              <li>문장과 감정이 중요하면 문학 소설</li>
             </ul>
           </article>
-
-          <aside class="photo-panel">
-            <div>
-              <div class="eyebrow">travel style</div>
-              <h3>영덕은 천천히 보는 여행에 잘 맞습니다.</h3>
-              <p>
-                바다를 오래 보고, 걷고, 쉬는 일정이 잘 어울립니다.
-                짧은 거리라도 여유를 두면 훨씬 편한 여행이 됩니다.
-              </p>
-            </div>
-            <div class="tag-row">
-              <span class="tag">블루로드</span>
-              <span class="tag">해수욕장</span>
-              <span class="tag">산책</span>
-              <span class="tag">특산물</span>
-              <span class="tag">휴식</span>
-            </div>
+          <aside class="quote-box">
+            <strong>작은 팁</strong>
+            <p>
+              소설 추천은 제목보다 분위기가 더 중요할 때가 많습니다.
+              이 페이지는 장르별 느낌을 먼저 보고, 클릭해서 자세히 확인하는 흐름으로 만들었습니다.
+            </p>
           </aside>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="tips">
-      <div class="shell">
-        <div class="section-head">
-          <div>
-            <h2>여행 팁</h2>
-            <p>실제 여행에 도움이 되는 부분만 짧게 정리했습니다.</p>
-          </div>
-        </div>
-        <div class="grid summary-grid">
-          <article class="card summary-card">
-            <div class="icon">⏱️</div>
-            <strong>시간 배분</strong>
-            <p>한 장소를 오래 보는 편이 전체 만족도가 높습니다.</p>
-          </article>
-          <article class="card summary-card">
-            <div class="icon">🚗</div>
-            <strong>이동 방식</strong>
-            <p>차가 있으면 훨씬 편하지만, 대중교통도 가능하도록 느슨하게 잡았습니다.</p>
-          </article>
-          <article class="card summary-card">
-            <div class="icon">🌦️</div>
-            <strong>날씨 확인</strong>
-            <p>해안길은 바람이 강할 수 있어 출발 전에 날씨를 한 번 확인하세요.</p>
-          </article>
-          <article class="card summary-card">
-            <div class="icon">📌</div>
-            <strong>최종 확인</strong>
-            <p>식당, 숙소, 운영 시간은 여행 전 다시 보는 것이 좋습니다.</p>
-          </article>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
+  <footer class="footer" id="footer">
     <div class="shell footer-inner">
       <div>
-        <strong>영덕 2박 3일 여행일정</strong>
-        <div>바다와 걷기, 먹거리, 휴식을 중심으로 정리한 단일 `index.html`</div>
+        <strong>소설 추천 모음</strong>
+        <div>판타지, 스릴러, 문학 소설을 소개하는 단일 `index.html`</div>
       </div>
-      <div>영덕문화관광 포털의 여행 분류를 참고해 구성했습니다</div>
+      <div>외부 CDN 없이 바로 실행 가능합니다</div>
     </div>
   </footer>
 
+  <div class="modal" id="detailModal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-top">
+        <div>
+          <div class="eyebrow" id="modalEyebrow">book detail</div>
+          <h3 id="modalTitle">제목</h3>
+          <div class="modal-meta" id="modalMeta"></div>
+        </div>
+        <button class="close-btn" id="closeModal" aria-label="닫기">✕</button>
+      </div>
+      <div class="modal-poster" id="modalPoster" aria-hidden="true"></div>
+      <p id="modalDesc" class="summary-card" style="padding: 0; margin: 0;"></p>
+      <div class="detail-grid-inner">
+        <div class="box">
+          <strong>이 소설의 포인트</strong>
+          <span id="modalPoint"></span>
+        </div>
+        <div class="box">
+          <strong>어울리는 독자</strong>
+          <span id="modalAudience"></span>
+        </div>
+      </div>
+      <div class="genre-bar" id="modalTags" style="margin-top: 14px;"></div>
+      <ul class="detail-list" id="modalList"></ul>
+    </div>
+  </div>
+
   <script>
     (function () {
-      const tabs = Array.from(document.querySelectorAll(".tab"));
-      const panels = Array.from(document.querySelectorAll("[data-panel]"));
+      const books = [
+        {
+          title: "오래된 왕국의 마지막 별",
+          genre: "판타지",
+          rating: "9.2",
+          short: "세계관과 모험이 살아 있는 정통 판타지.",
+          desc: "왕국의 몰락과 함께 사라진 별의 비밀을 따라가는 서사입니다. 거대한 세계관, 운명적인 인물 관계, 모험의 리듬이 잘 살아 있습니다.",
+          point: "세계 구축과 장면 전환이 선명해서 상상하며 읽기 좋습니다.",
+          audience: "새로운 세계와 서사를 차근차근 즐기고 싶은 독자",
+          tags: ["판타지", "모험", "세계관"],
+          bullets: ["마법과 운명", "여정 중심 전개", "선명한 상상력"],
+          poster: "linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.76)), radial-gradient(circle at top, #7dd3fc, #1e2740 58%, #090b12 100%)"
+        },
+        {
+          title: "숲의 이름을 부르는 밤",
+          genre: "판타지",
+          rating: "8.9",
+          short: "조용하고 서정적인 판타지 소설.",
+          desc: "거대한 전투보다 분위기와 정서를 먼저 보여주는 작품입니다. 숲, 바람, 기억 같은 이미지가 천천히 쌓이며 독자를 끌어당깁니다.",
+          point: "속도보다 분위기를 좋아하는 독자에게 잘 맞습니다.",
+          audience: "차분한 판타지와 서정적인 문장을 선호하는 독자",
+          tags: ["판타지", "서정", "감성"],
+          bullets: ["잔잔한 호흡", "이미지 중심", "감정의 결"],
+          poster: "linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.76)), radial-gradient(circle at top, #c084fc, #22193a 58%, #090b12 100%)"
+        },
+        {
+          title: "마지막 편지의 살인",
+          genre: "스릴러",
+          rating: "9.1",
+          short: "단서가 하나씩 맞물리는 추리 스릴러.",
+          desc: "한 통의 편지에서 시작해 사건의 중심으로 들어가는 이야기입니다. 인물마다 숨기는 것이 있고, 독자는 끝까지 의심하게 됩니다.",
+          point: "단서를 모으는 재미와 반전의 리듬이 좋습니다.",
+          audience: "빠른 전개와 추리, 반전을 좋아하는 독자",
+          tags: ["스릴러", "추리", "반전"],
+          bullets: ["긴장감 유지", "의심과 추적", "마지막 반전"],
+          poster: "linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.76)), radial-gradient(circle at top, #fbbf24, #392413 58%, #090b12 100%)"
+        },
+        {
+          title: "창문 없는 집의 소문",
+          genre: "스릴러",
+          rating: "9.0",
+          short: "차가운 분위기가 강한 심리 스릴러.",
+          desc: "폐쇄적인 공간과 사람들 사이의 불신이 쌓이며 긴장을 만드는 작품입니다. 소설 전체가 차갑고 조용한 압박감을 유지합니다.",
+          point: "심리전과 분위기 조성이 뛰어납니다.",
+          audience: "정적이지만 무거운 긴장감을 좋아하는 독자",
+          tags: ["스릴러", "심리", "미스터리"],
+          bullets: ["폐쇄된 공간", "심리적 긴장", "서늘한 분위기"],
+          poster: "linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.76)), radial-gradient(circle at top, #fb7185, #30131a 58%, #090b12 100%)"
+        },
+        {
+          title: "비가 지나간 오후",
+          genre: "문학",
+          rating: "9.4",
+          short: "문장과 감정이 오래 남는 문학 소설.",
+          desc: "일상의 작은 순간을 정성스럽게 바라보는 작품입니다. 크게 흔들지 않고, 천천히 마음의 결을 건드리는 방식이 인상적입니다.",
+          point: "문장 자체가 주는 리듬과 여운이 뛰어납니다.",
+          audience: "조용한 이야기를 깊이 읽고 싶은 독자",
+          tags: ["문학", "정서", "여운"],
+          bullets: ["섬세한 문장", "일상 관찰", "오래 남는 결말"],
+          poster: "linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.76)), radial-gradient(circle at top, #a78bfa, #1f2238 58%, #090b12 100%)"
+        },
+        {
+          title: "사라지지 않는 계절",
+          genre: "문학",
+          rating: "9.3",
+          short: "인물의 내면을 따라가는 감성 문학.",
+          desc: "계절의 변화와 함께 인물의 감정이 천천히 바뀌는 소설입니다. 크지 않은 사건도 충분히 깊게 다뤄집니다.",
+          point: "조용하게 읽히지만 마지막에 남는 느낌이 큽니다.",
+          audience: "인물과 감정을 천천히 따라가고 싶은 독자",
+          tags: ["문학", "내면", "사색"],
+          bullets: ["내면 서사", "계절의 변화", "느린 감동"],
+          poster: "linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.76)), radial-gradient(circle at top, #7dd3fc, #2a3047 58%, #090b12 100%)"
+        }
+      ];
 
-      function setActive(day) {
-        tabs.forEach((tab) => {
-          const active = tab.dataset.day === String(day);
-          tab.classList.toggle("active", active);
-          tab.setAttribute("aria-selected", String(active));
-        });
+      const todayPicks = [
+        {
+          title: "비가 지나간 오후",
+          copy: "조용한 문장과 섬세한 감정이 중심인 문학 소설입니다. 한 장씩 천천히 읽기 좋은 작품으로 추천합니다.",
+          reason: "문장 자체가 느린 호흡을 가지고 있어, 조용한 시간과 잘 어울립니다.",
+          mood: "잔잔함 · 사색 · 몰입",
+          rating: "9.4 / 10",
+          desc: "일상의 작은 순간을 정성스럽게 바라보는 작품입니다. 크게 흔들지 않고, 천천히 마음의 결을 건드리는 방식이 인상적입니다.",
+          point: "문장과 분위기가 앞에 나오는 타입의 소설입니다.",
+          audience: "소설의 분위기와 여운을 중요하게 보는 독자",
+          tags: ["문학", "정서", "여운"],
+          bullets: ["오늘의 한 권", "천천히 읽기", "감정의 여운"],
+          poster: "linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.76)), radial-gradient(circle at top, #a78bfa, #1f2238 58%, #090b12 100%)"
+        },
+        {
+          title: "마지막 편지의 살인",
+          copy: "단서가 하나씩 맞물리는 스릴러 소설입니다. 빠른 전개와 반전이 필요할 때 고르기 좋습니다.",
+          reason: "한 번 읽기 시작하면 멈추기 어려운 흐름이 장점입니다.",
+          mood: "긴장감 · 추적 · 반전",
+          rating: "9.1 / 10",
+          desc: "한 통의 편지에서 시작해 사건의 중심으로 들어가는 이야기입니다. 인물마다 숨기는 것이 있고, 독자는 끝까지 의심하게 됩니다.",
+          point: "추리와 반전의 맛이 선명합니다.",
+          audience: "빠른 전개와 몰입을 원하는 독자",
+          tags: ["스릴러", "추리", "반전"],
+          bullets: ["빠른 전개", "단서 수집", "마지막 반전"],
+          poster: "linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.76)), radial-gradient(circle at top, #fbbf24, #392413 58%, #090b12 100%)"
+        }
+      ];
 
-        panels.forEach((panel) => {
-          panel.classList.remove("hidden");
-          panel.style.display = panel.dataset.panel === String(day) ? "" : "none";
-        });
+      const recommendGrid = document.getElementById("recommendGrid");
+      const todayCard = document.getElementById("todayCard");
+      const todayTitle = document.getElementById("todayTitle");
+      const todayCopy = document.getElementById("todayCopy");
+      const todayReason = document.getElementById("todayReason");
+      const todayMood = document.getElementById("todayMood");
+      const todayAudience = document.getElementById("todayAudience");
+      const todayRating = document.getElementById("todayRating");
+      const todayTags = document.getElementById("todayTags");
+      const modal = document.getElementById("detailModal");
+      const closeModal = document.getElementById("closeModal");
+      const modalEyebrow = document.getElementById("modalEyebrow");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalMeta = document.getElementById("modalMeta");
+      const modalPoster = document.getElementById("modalPoster");
+      const modalDesc = document.getElementById("modalDesc");
+      const modalPoint = document.getElementById("modalPoint");
+      const modalAudience = document.getElementById("modalAudience");
+      const modalTags = document.getElementById("modalTags");
+      const modalList = document.getElementById("modalList");
+
+      const createTags = (tags) => tags.map((tag) => `<span class="tag">${tag}</span>`).join("");
+
+      function renderRecommend() {
+        recommendGrid.innerHTML = books.map((book, index) => `
+          <article class="card story-card" role="button" tabindex="0" data-index="${index}" aria-label="${book.title} 자세히 보기">
+            <div class="story-head">
+              <div>
+                <h3>${book.title}</h3>
+                <p>${book.short}</p>
+              </div>
+              <span class="badge">${book.genre} · ${book.rating}</span>
+            </div>
+            <div class="genre-bar">${createTags(book.tags)}</div>
+            <div class="chip" style="margin-top: 14px; width: fit-content;">자세히 보기</div>
+          </article>
+        `).join("");
       }
 
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", () => setActive(tab.dataset.day));
+      function applyToday(index) {
+        const pick = todayPicks[index];
+        todayTitle.textContent = pick.title;
+        todayCopy.textContent = pick.copy;
+        todayReason.textContent = pick.reason;
+        todayMood.textContent = pick.mood;
+        todayAudience.textContent = pick.audience;
+        todayRating.textContent = pick.rating;
+        todayTags.innerHTML = createTags(pick.tags);
+      }
+
+      function openModal(item) {
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        modalEyebrow.textContent = item.genre || "book detail";
+        modalTitle.textContent = item.title;
+        modalMeta.innerHTML = `
+          <span class="tag">${item.genre || "추천"}</span>
+          <span class="tag">${item.rating || ""}</span>
+        `;
+        modalPoster.style.setProperty("--modal-poster", item.poster);
+        modalDesc.textContent = item.desc;
+        modalPoint.textContent = item.point;
+        modalAudience.textContent = item.audience;
+        modalTags.innerHTML = createTags(item.tags || []);
+        modalList.innerHTML = (item.bullets || []).map((bullet) => `<li>${bullet}</li>`).join("");
+      }
+
+      function closeDetail() {
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+
+      recommendGrid.addEventListener("click", (event) => {
+        const card = event.target.closest("[data-index]");
+        if (!card) return;
+        openModal(books[Number(card.dataset.index)]);
       });
 
-      setActive(1);
+      recommendGrid.addEventListener("keydown", (event) => {
+        const card = event.target.closest("[data-index]");
+        if (!card) return;
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openModal(books[Number(card.dataset.index)]);
+        }
+      });
+
+      todayCard.addEventListener("click", () => openModal(todayPicks[0]));
+      todayCard.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openModal(todayPicks[0]);
+        }
+      });
+
+      closeModal.addEventListener("click", closeDetail);
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeDetail();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeDetail();
+      });
+
+      renderRecommend();
+      applyToday(0);
     })();
   </script>
 </body>
